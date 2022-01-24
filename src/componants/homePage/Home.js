@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="w-full min-h-screen bg-cover bg-center bg-no-repeat bg-home-mobile md:bg-home-teblet lg:bg-home-desktop">
+    <div className="w-full min-h-screen bg-black bg-cover bg-center bg-no-repeat bg-home-mobile md:bg-home-teblet lg:bg-home-desktop">
       <div className=" pt-[112px] px-6 md:pt-[202px] md:px-[162px] md:pb-[90px] xl:flex xl:pt-[350px] xll:pt-[387px] xll:px-[165px] xl:justify-between extral:px-[250px] extral:pt-[450px]">
         <div className=" flex flex-col items-center xl:items-start xll:flex-1">
           <h5 className="font-barlow text-base leading-[1.19rem] text-pur tracking-[0.17rem] text-center font-normal md:text-xl md:leading-6 md:tracking-[0.21rem] xl:text-left xll:text-[1.75rem] xll:leading-[2.13rem] extral:text-[2.75rem]">

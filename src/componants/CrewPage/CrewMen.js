@@ -8,10 +8,15 @@ const CrewMen = ({ data, img }) => {
   const [mark, setMark] = useState(false);
   const [victor, setVictor] = useState(false);
   const [ansari, setAnsari] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const location = useLocation();
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVisible(true);
+    }, 200);
+
     setDouglas(false);
     setMark(false);
     setVictor(false);
@@ -25,10 +30,16 @@ const CrewMen = ({ data, img }) => {
     } else {
       setAnsari(true);
     }
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
-    <div className=" mt-8 md:mt-[60px] flex flex-col md:flex-col-reverse lg:flex-row-reverse lg:mt-0">
+    <div
+      className={`mt-8 md:mt-[60px] flex flex-col md:flex-col-reverse lg:flex-row-reverse lg:mt-0 transition-all ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className=" w-full border-b border-[#383B48] md:mt-10 xll:mt-0 lg:border-none md:flex-1 lg:relative">
         <img
           src={img}

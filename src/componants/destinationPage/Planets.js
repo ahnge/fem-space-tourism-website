@@ -6,11 +6,16 @@ const Planets = ({ data, img }) => {
   const [mars, setMars] = useState(false);
   const [europa, setEuropa] = useState(false);
   const [titan, setTitan] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const { name, description, distance, travel } = data;
   const location = useLocation();
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVisible(true);
+    }, 200);
+
     setMoon(false);
     setMars(false);
     setEuropa(false);
@@ -24,10 +29,16 @@ const Planets = ({ data, img }) => {
     } else {
       setTitan(true);
     }
+
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
-    <div className="flex flex-col items-center mt-8 md:mt-[60px] xll:mt-16 extral:mt-20 pb-14 lg:flex-row lg:justify-between">
+    <div
+      className={`flex flex-col items-center mt-8 md:mt-[60px] xll:mt-16 extral:mt-20 pb-14 lg:flex-row lg:justify-between transition-all ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className=" pb-[26px] md:pb-[53px] xll:pb-0">
         <img
           src={img}

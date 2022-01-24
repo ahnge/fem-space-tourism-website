@@ -5,12 +5,17 @@ const Rockets = ({ data, landscape, portrait }) => {
   const [one, setOne] = useState(false);
   const [two, setTwo] = useState(false);
   const [three, setThree] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   const location = useLocation();
 
   const { name, description } = data;
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      setVisible(true);
+    }, 200);
+
     setOne(false);
     setThree(false);
     setTwo(false);
@@ -22,10 +27,16 @@ const Rockets = ({ data, landscape, portrait }) => {
     } else {
       setThree(true);
     }
+
+    return () => clearTimeout(timeout);
   }, [location.pathname]);
 
   return (
-    <main className=" mt-8 lg:flex lg:flex-row-reverse lg:pl-[100px] lg:items-center lg:gap-10 lg:justify-between xl:pl-[130px] xll:pl-[166.5px] extral:pl-[250px]">
+    <main
+      className={`mt-8 lg:flex lg:flex-row-reverse lg:pl-[100px] lg:items-center lg:gap-10 lg:justify-between xl:pl-[130px] xll:pl-[166.5px] extral:pl-[250px] transition-all ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div>
         <img
           src={landscape}
